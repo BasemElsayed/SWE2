@@ -1,9 +1,11 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product implements Serializable 
@@ -17,11 +19,13 @@ public class Product implements Serializable
 	private String Brand;
 	@Id
 	private String Code = "";
-	
 	private String Description;
 	private String Type;
 	private String Price;
 
+	@OneToMany(mappedBy = "product")
+	Set <StoreProduct> storeProduct;
+	
 	
 	public Product()
 	{
@@ -68,7 +72,7 @@ public class Product implements Serializable
 		this.Price = Price;
 	}
 	
-	public String getName(String ProductName)
+	public String getName()
 	{
 		return this.productName;
 	}
