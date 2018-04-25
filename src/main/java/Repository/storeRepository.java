@@ -1,12 +1,11 @@
 package Repository;
 
 
-
 import org.springframework.data.repository.CrudRepository;
 
-import Entity.User;
+import Entity.Store;
 
-public interface userRepository extends CrudRepository<User, String> {
+public interface storeRepository extends CrudRepository<Store, String>{
 
 	
 }
