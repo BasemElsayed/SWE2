@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Customer Home Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+
+        <!-- src/main/resources/static/css/style.css -->  
+    </head>
+
+    <body class="body bodyCustomerShowProduct bodyStoreOwnerHomePage approvePageBody">
+         
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="customerHomePage">Home</a></li>
+                    <li><a href="customerProductsStatistics">Products Stats</a></li>
+                    <li><a href="customerUsersStatistics">Users Stats</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <center>
+            <div class="cont container">
+                <p th:if="${warningSucc}" style="color: greenyellow">*Congratulation, You had buyed The Product Successfully*</p>
+                <p th:if="${warning}">*Sorry,Unsuccessfull Operation*</p>
+                
+                <table class="table" border="2">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product Brand</th>
+                        <th>Product Type</th>
+                        <th>Product Description</th>
+                        <th>Product Price</th>
+                        <th>Decision</th>
+                        
+                    </tr>
+                    
+                    <tr th:each = "product : ${products}">
+                        <td th:text="${product.getProduct().getName()}">productName</td>
+                        <td th:text="${product.getProduct().Brand}">productBrand</td>
+                        <td th:text="${product.getProduct().Type}">productType</td>
+                        <td th:text="${product.getProduct().Description}">productDescription</td>
+                        <td th:text="${product.getProduct().Price}">Price</td>
+                        <td>
+                            <form action="customerShowProduct" method="post">
+                                <input type="text" hidden="true" name="prodCode" th:value="${product.getProduct().Code}">
+                                <input type="text" hidden="true" name="storeName" th:value="${product.getStore().storeName}">
+                                
+                                <input type="text" placeholder="Your Address" name="address" required> <br>
+                                <input type="text" placeholder="Your Phone" name="phone" required> <br>
+                                <input type="number" placeholder="Quantity" name="quantity" required> <br>
+                                <input type="submit" value="Buy">
+                            </form>
+                            <a href="customerHomePage"><button>Back</button></a>
+                        </td>    
+                    </tr> 
+                </table>
+            </div>
+        </center>
+        
+    </body>
+</html>

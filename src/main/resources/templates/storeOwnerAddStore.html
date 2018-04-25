@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Store Owner Add Store</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+
+        <!-- src/main/resources/static/css/style.css -->   
+    </head>
+
+    <body class="body bodyStoreOwnerAddStore">
+        
+        
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="storeOwnerHomePage">Home</a></li>
+                    <li><a href="storeOwnerAddStore" style="color: #ff8b38;">Add Store</a></li>
+                    <li><a href="storeOwnerAddProduct">Add Products</a></li>
+                    <li><a href="storeOwnerEditProduct">Edit</a></li>
+                    <li><a href="storeOwnerAddOffer">Add Offer</a></li>
+                    <li><a href="storeOwnerBuyProduct">Buy</a></li>
+                    <li><a href="storeOwnerShowStat">Store Stats</a></li>
+                    <li><a href="storeOwnerProductsStatistics">Products Stats</a></li>
+                    <li><a href="storeOwnerUsersStatistics">Users Stats</a></li>
+                    <li><a href="storeOwnerActionsHistory">Actions</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        
+        <div class="form">
+            <h1>Add <span>Store</span></h1>
+            <form action="#" method="post" th:object="${model}">
+                <input type="text" name="storeName" placeholder="Store Name" required />
+                <input type="text" name="storeAddress" placeholder="Address" required />
+                <input type="text" name="storeCategory" placeholder="Category" required />
+                
+                <p th:if="${warning}">*The Store is Already Exist*</p>
+                
+                <select name = "storeType"> 
+                    <option value="Online" >Online</option>
+                    <option value="Onsite">Onsite</option>
+                </select>
+
+                <input class="btn-block" type="submit" value="Submit" />
+            </form>
+        </div>
+        
+        
+    </body>
+</html>
+
+

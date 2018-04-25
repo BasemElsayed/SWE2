@@ -1,24 +1,51 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Login</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
-</head>
+    <head>
+        <title>Admin Add Product</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
 
-<body class="body">
-    <form action="#" method="post">
-        <p>Name : <input type="text" name="productName"/></p>
-        <p>Code : <input type="text" name="Code"/></p>
-        <p>Price : <input type="text" name="Price"/></p>
-        <p>Description : <input type="text" name="Description"/></p>
-        <p>Brand : <input type="text" name="Brand"/></p>
-        <p>Type : 
-            <select name = "Type"> 
-                <option value="Online" >Online</option>
-                <option value="Onsite">Onsite</option>
-            </select>
-        </p>
-        <p><input type="submit"/></p>
-    </form>
-</body>
+        <!-- src/main/resources/static/css/style.css -->   
+    </head>
+
+    <body class="body bodyAdminAddProduct">
+        
+        
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="adminHomePage">Home</a></li>
+                    <li><a href="adminAddProduct" style="color: #ff8b38;">Add Product</a></li>
+                    <li><a href="adminAddBrand">Add Brand</a></li>
+                    <li><a href="adminAprroveStores">View Stores</a></li>
+                    <li><a href="adminApproveStatistics">System Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        <div class="form">
+            <h1>Add <span>Product</span></h1>
+            <form action="#" method="post">
+                <input type="text" name="productName" placeholder="Product Name" required />
+                <input type="text" name="Code" placeholder="Code" required />
+                <input type="text" name="Price" placeholder="Price" required />
+                <input type="text" name="Description" placeholder="Description" required />
+                <input type="text" name="Brand" placeholder="Brand Name" required />
+                
+                <p th:if="${warningSameProduct}">*This Product is Already Exist* </p>
+                
+                <p th:if="${warningBrand}">*Not Found This Brand in the System* </p>
+                
+                <select name = "Type"> 
+                    <option value="Online" >Online</option>
+                    <option value="Onsite">Onsite</option>
+                </select>
+
+                <input class="btn-block" type="submit" value="Submit" />
+            </form>
+        </div>
+        
+    </body>
 </html>

@@ -3,8 +3,9 @@
 <head>
     <title>Login</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="src/main/resources/static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
     
+    <!-- src/main/resources/static/css/style.css -->
 </head>
 
     
@@ -12,17 +13,32 @@
         var name
     
     </script>
-<body>
+<body class="body">
     
-    <div>
-        <h1>Login</h1>
-        <form action="index" method="post">
-            <input type="text" name = "name"/> <br>
-            <input type="password" name ="pass"/> <br>
-            <input type="submit" value="Submit" /> <br>
-            <a href="signUp">Create account</a>
+    <div class="logo">
+        <div class="container">
+            <h1><span>AliBaba</span>Egypt</h1>
+            <ul>
+                <li><a href="index" style="color: #ff8b38">Login</a></li>
+                <li><a href="signUp">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="form">
+        <h1>Log<span>in</span></h1>
+        <form action="" method="post" th:object="${model}">
+            <input type="text" placeholder="Your Email" name = "name" required />
+            <p th:if="${warning}">*Wrong pass or username* </p>
+            <input type="password" placeholder="Password" name ="pass"/>
+            <input class="btn-block" type="submit" value="Submit" />
         </form>
     </div>
 
+    
+    
+    
+    
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin Add Brand</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+
+            <!-- src/main/resources/static/css/style.css -->
+    </head>
+
+    <body class="body bodyAdminAddBrand">
+
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="adminHomePage">Home</a></li>
+                    <li><a href="adminAddProduct">Add Product</a></li>
+                    <li><a href="adminAddBrand" style="color: #ff8b38;">Add Brand</a></li>
+                    <li><a href="adminAprroveStores">View Stores</a></li>
+                    <li><a href="adminApproveStatistics">System Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="form">
+            <h1>Add <span>brand</span></h1>
+            <form action="#" method="post" th:object="${model}">
+                <input type="text" name="brandName" placeholder="Brand Name" required />
+                <input type="text" name="brandDescription" placeholder="Description" required />
+                <input type="text" name="brandCategory" placeholder="Category" required />
+                
+                <p th:if="${warning}">*Brand Alread Exist in The System* </p>
+                
+                <input class="btn-block" type="submit" value="Submit" />
+            </form>
+        </div>
+        
+    </body>
+</html>
