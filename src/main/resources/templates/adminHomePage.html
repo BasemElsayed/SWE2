@@ -1,12 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Login</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
-</head>
+    <head>
+        <title>Admin Home Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
 
-    <body class="body">
-         <a href="adminAddProduct" ><input type="submit" value="Add Product"/></a>
+        <!-- src/main/resources/static/css/style.css -->
+    </head>
+
+    <body class="body bodyAdminHomePage">
+        
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="adminHomePage" style="color: #ff8b38;">Home</a></li>
+                    <li><a href="adminAddProduct">Add Product</a></li>
+                    <li><a href="adminAddBrand">Add Brand</a></li>
+                    <li><a href="adminAprroveStores">View Stores</a></li>
+                    <li><a href="adminApproveStatistics">System Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <h1 style="text-align: center; color: white;">Welcome, Admin Home Page</h1>
 
     </body>
 </html>

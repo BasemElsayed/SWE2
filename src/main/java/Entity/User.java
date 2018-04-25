@@ -1,9 +1,13 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.Random;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User implements Serializable {
@@ -15,10 +19,24 @@ public class User implements Serializable {
 	
 	private String userName;
 	private String Password;
+	private double balance;
+
+
 	@Id
 	private String Email = "";
 	private String Type;
 	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<Store> stores;
+	
+	
+	
+	public Set<Store> getStores() {
+		return stores;
+	}
+	public void setStores(Set<Store> stores) {
+		this.stores = stores;
+	}
 	public User()
 	{
 		super();
@@ -26,6 +44,8 @@ public class User implements Serializable {
 		Password = "";
 		Type = "";
 		Email = "";
+		Random rand = new Random();
+		balance = rand.nextInt(10000) + 5000;
 	}
 	public User(String userName, String Password, String Email, String Type)
 	{
@@ -34,9 +54,17 @@ public class User implements Serializable {
 		this.Password = Password;
 		this.Type = Type;
 		this.Email = Email;
+		Random rand = new Random();
+		balance = rand.nextInt(10000) + 5000;
 	}
 	
-	public void setName(String userName)
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public void setUserName(String userName)
 	{
 		this.userName = userName;
 	}

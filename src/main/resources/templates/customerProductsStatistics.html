@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin Home Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+
+        <!-- src/main/resources/static/css/style.css -->
+    </head>
+
+    <body class="body bodyAdminHomePage approvePageBody">
+        
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="customerHomePage">Home</a></li>
+                    <li><a href="customerProductsStatistics" style="color: #ff8b38;">Products Stats</a></li>
+                    <li><a href="customerUsersStatistics">Users Stats</a></li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <center style="margin-top: 100px;">
+            <div class="cont container" style="width: 250px; display: inline-block; margin: 10px;">
+                <table class="table" border="2">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Most Visited</th>
+                    </tr>
+                    <tr th:each = "storeProduct : ${maxProdVisited}">                       
+                        <td th:text="${storeProduct.getProduct().getName()}">productName</td>
+                        <td th:text="${storeProduct.numberOfVisitedProduct}">mostVisited</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="cont container" style="width: 250px; display: inline-block; margin: 10px;">
+                <table class="table" border="2">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Most Buyed</th>
+                    </tr>
+                    <tr th:each = "storeProduct : ${maxProdSold}">                       
+                        <td th:text="${storeProduct.getProduct().getName()}">productName</td>
+                        <td th:text="${storeProduct.numberOfSoldProduct}">mostBuyed</td>
+                    </tr>
+                </table>
+            </div>
+            
+            
+            
+            
+            <div class="cont container" style="width: 250px; display: inline-block; margin: 10px;">
+                <table class="table" border="2">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Minimum Visited</th>
+                    </tr>
+                    <tr th:each = "storeProduct : ${minProdVisited}">                       
+                        <td th:text="${storeProduct.getProduct().getName()}">productName</td>
+                        <td th:text="${storeProduct.numberOfVisitedProduct}">minimumVisited</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="cont container" style="width: 250px; display: inline-block; margin: 10px;">
+                <table class="table" border="2">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Minimum Buyed</th>
+                    </tr>
+                    <tr th:each = "storeProduct : ${minProdSold}">                       
+                        <td th:text="${storeProduct.getProduct().getName()}">productName</td>
+                        <td th:text="${storeProduct.numberOfSoldProduct}">minimumBuyed</td>
+                    </tr>
+                </table>
+            </div>
+            
+        </center>
+
+    </body>
+</html>

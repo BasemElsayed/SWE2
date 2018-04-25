@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Customer Home Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+
+        <!-- src/main/resources/static/css/style.css -->  
+    </head>
+
+    <body class="body bodyStoreOwnerHomePage approvePageBody bodyStoreOwnerAddStore">
+         
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="storeOwnerHomePage">Home</a></li>
+                    <li><a href="storeOwnerAddStore">Add Store</a></li>
+                    <li><a href="storeOwnerAddProduct">Add Products</a></li>
+                    <li><a href="storeOwnerEditProduct" style="color: #ff8b38;">Edit</a></li>    
+                    <li><a href="storeOwnerAddOffer">Offer</a></li>
+                    <li><a href="storeOwnerBuyProduct">Buy</a></li>
+                    <li><a href="storeOwnerShowStat">Store Stats</a></li>
+                    <li><a href="storeOwnerProductsStatistics">Products Stats</a></li>
+                    <li><a href="storeOwnerUsersStatistics">Users Stats</a></li>
+                    <li><a href="storeOwnerActionsHistory">Actions</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <center>
+            
+            <div class="cont container">
+            
+                <table class="table" border="2">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Edit Product</th>
+                    </tr>
+                                        
+                    
+                    <tr th:each = "product : ${products}">
+                       
+                        <td th:text="${product.getProduct().getName()}">productName</td>
+                        <td th:text="${product.getProduct().Price}">Price</td>
+                        <td>
+                            <form action="#" method="post">
+                                <input type="text" hidden="true" name="prodCode" th:value="${product.getProduct().Code}">
+                                <input type="text" hidden="true" name="storeName" th:value="${product.getStore().storeName}">
+                                <input type="submit" value="Edit Product">
+                            </form>
+                        </td>
+                           
+                        
+                    </tr>
+                </table>
+            
+            </div>
+            
+        </center>
+        
+    </body>
+</html>

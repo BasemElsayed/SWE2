@@ -2,21 +2,39 @@
 
 <html>
 <head>
-    <title>Sign up</title>     
+    <title>Sign up</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    
+    <!-- src/main/resources/static/css/style.css -->
 </head>
 
-<body>
-    <div class="login">
-        <h1>Sign Up</h1>
-        <form action="#" method="post">
+<body class="bodySignUp">
+    
+    <div class="logo">
+        <div class="container">
+            <h1><span>AliBaba</span>Egypt</h1>
+            <ul>
+                <li><a href="index">Login</a></li>
+                <li><a href="signUp" style="color: #ff8b38;">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="form">
+        <h1>Sign <span>Up</span></h1>
+        <form action="#" method="post" th:object="${model}">
             <input type="text" name="name" placeholder="Username" required="required" /> <br> <br>
             <input type="password" name="pass" placeholder="Password" required="required" /> <br> <br>
             <input type="email" name="email" placeholder="Email" required="required" /> <br> <br>
+            
+            <p th:if="${warning}">*Email is Already Exist* </p>
+            
 			<select name="type">
 				<option value="Customer">Customer</option>
 				<option value="StoreOwner">StoreOwner</option>
 			</select> <br> <br>
-            <input type="submit" value="Sign Up">
+            <input class="btn-block" type="submit" value="Submit">
         </form>
     </div>
 </body>

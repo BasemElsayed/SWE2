@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin Approve Stores Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+
+        <!-- src/main/resources/static/css/style.css --> 
+    </head>
+
+    <body class="body approvePageBody">
+
+        
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="adminHomePage">Home</a></li>
+                    <li><a href="adminAddProduct">Add Product</a></li>
+                    <li><a href="adminAddBrand">Add Brand</a></li>
+                    <li><a href="adminAprroveStores" style="color: #ff8b38;">View Stores</a></li>
+                    <li><a href="adminApproveStatistics">System Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <center>
+            
+            <div class="cont container">
+            
+                <table class="table" border="2">
+                    <tr>
+                        <th>Store Name</th>
+                        <th>Address</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Permission</th>
+                    </tr>
+
+                    <tr th:each = "store : ${stores}">
+                       
+                        <td th:text="${store.storeName}">storeName</td>
+                        <td th:text="${store.storeAddress}">storeAddress</td>
+                        <td th:text="${store.storeCategory}">storeCategory</td>
+                        <td th:text="${store.storeType}">storeType</td>
+                        <td>
+                            <form action="#" method="post">
+                             
+                                <input type="text" hidden="true" th:value="${store.storeName}" name="storeName" id="storeName">
+                                    
+                                <input type="submit" value="Confirm">
+                            </form>
+                        </td>
+                           
+                        
+                    </tr>
+                </table>
+            
+            </div>
+            
+        </center>
+    </body>
+    
+    
+</html>

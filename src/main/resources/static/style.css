@@ -1,0 +1,459 @@
+
+
+/* Start Login Page */
+.body
+{
+    background-image: url("header6.jpg");
+    background-size: cover;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: overlay;
+    background-position: top left;
+    margin: 0;
+}
+
+.container
+{
+    width: 1200px;
+    margin: auto;
+}
+
+.logo
+{
+    background-color: rgba(0,0,0,0.4);
+    height: 75px;
+    transition: all 0.5s ease-in-out;
+}
+.logo h1
+{
+    padding: 15px;
+    margin: 0;
+    color: #FFF;
+    float: left;
+    transition: all 0.5s ease-in-out;
+}
+.logo h1 span
+{
+    color: #ff8b38;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.logo:hover h1
+{
+    color: #ff8b38;
+}
+.logo:hover h1 span
+{
+    color: #FFF;
+}
+
+.logo ul
+{
+    float: right;
+    list-style-type: none;
+    margin-top: 25px;
+}
+.logo ul li
+{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.logo ul li a
+{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+}
+.logo ul li a:hover
+{
+    color: #ff8b38;
+}
+
+
+.form
+{
+    margin-left: 39%;
+    margin-top: 11%;
+    background-color: #FFF;
+    width: 15%;
+    width: 289px;
+    border-radius: 3%;
+    height: 273px;
+}
+
+.form h1
+{
+    background-color: #e4e4e4;
+    padding: 12px 42px;
+    border-radius: -19%;
+    width: 71%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+.form input
+{
+    height: 27px;
+    width: 204px;
+    border: none;
+    border-bottom: 1px solid #d1d1d1;
+    margin-bottom: 20px;
+    box-shadow: none;
+    outline: none;
+    font-size: 15px;
+    margin-top: 20px;
+    padding-left: 8px;
+}
+
+.form input:focus
+{
+    border-color: #f5f5f5;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(255, 139, 56);
+}
+
+.form .btn-block
+{
+    width: 116%;
+    height: 48px;
+    background-color: #ff8b38;
+    color: #FFF;
+    cursor: pointer;
+    margin-top: 42px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-left: -40px;
+    border: none;
+}
+
+.form h1 span
+{
+    color: #ff8b38;
+}
+ p
+{
+    margin: 0px;
+    margin-bottom: 8px;
+    color: red;
+    position: absolute;
+    margin-top: -10px;
+}
+
+form
+{
+    margin-left: 40px;
+}
+/* End Login Page */
+
+
+
+/* Start SignUp Page */
+.bodySignUp
+{
+    background-image: url("header5.jpg");
+    background-size: cover;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: overlay;
+    background-position: top left;
+    margin: 0;
+}
+
+.bodySignUp .form
+{
+    margin-top: 8%;
+    height: 395px;
+    width: 320px;
+}
+.bodySignUp .form h1
+{
+    width: 73.9%;
+}
+.bodySignUp .form input
+{
+    margin-top: 0px;
+    width: 230px;
+}
+.bodySignUp .form select
+{
+    margin-bottom: 14px;
+}
+.bodySignUp .form .btn-block
+{
+    width: 114.6%;
+    height: 55px;
+}
+
+.bodySignUp .form p
+{
+    margin-top: -26px;
+}
+
+/* End SignUp Page */
+
+
+
+
+/* Start Admin Home Page */
+
+.bodyAdminHomePage
+{
+    margin: 0;
+}
+
+
+/* End Admin Home Page */
+
+
+
+/* Start Admin Add Product */
+
+.bodyAdminAddProduct .form
+{
+    margin-top: 5%;
+}
+.bodyAdminAddProduct .form
+{
+    margin-top: 7%;
+    height: 440px;
+    width: 335px;
+}
+.bodyAdminAddProduct .form h1
+{
+    width: 74.9%;
+}
+.bodyAdminAddProduct .form input
+{
+    margin-top: 0px;
+    width: 250px;
+}
+.bodyAdminAddProduct .form select
+{
+    margin-bottom: 24px;
+    margin-top: 10px;
+}
+.bodyAdminAddProduct .form .btn-block
+{
+    width: 113.6%;
+    height: 55px;
+}
+
+.bodyAdminAddProduct .form p
+{
+    margin-top: -12px;
+}
+/* End Admin Add Product */
+
+
+
+
+
+/* Start Admin Add Brand */
+.bodyAdminAddBrand .form
+{
+    margin-top: 5%;
+}
+.bodyAdminAddBrand .form
+{
+    margin-top: 8%;
+    height: 360px;
+    width: 310px;
+}
+.bodyAdminAddBrand .form h1
+{
+    width: 72.9%;
+}
+.bodyAdminAddBrand .form input
+{
+    margin-top: 14px;
+    width: 220px;
+}
+
+.bodyAdminAddBrand .form .btn-block
+{
+    width: 114.7%;
+    height: 55px;
+    margin-top: 30px;
+}
+
+.bodyAdminAddBrand .form p
+{
+    margin-top: -5px;
+}
+/* End Admin Add Brand */
+
+
+
+/* Start Approve Stores Page */
+
+.approvePageBody .cont
+{
+    margin-top: 5%;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 15px;
+    padding: 30px 15px;
+}
+
+.approvePageBody .table
+{
+    width: 95%;
+    color: #FFF;
+    border: 2px solid #ff8b38;
+    text-align: center;
+}
+.approvePageBody .table td
+{
+    border-radius: 10px;
+}
+.approvePageBody .table tr
+{
+    border-radius: 10px;
+}
+.approvePageBody .table input
+{
+    background-color: greenyellow;
+    border: 1px solid #fff;
+}
+
+
+/* End Approve Stores Page */
+
+
+
+
+
+
+
+
+/* Start Store Owner Add Store */
+.bodyStoreOwnerAddStore
+{
+    background-image: url(header3.jpg);
+}
+.bodyStoreOwnerAddStore .form
+{
+    margin-top: 5%;
+}
+.bodyStoreOwnerAddStore .form
+{
+    margin-top: 8%;
+    height: 407px;
+    width: 310px;
+}
+.bodyStoreOwnerAddStore .form h1
+{
+    width: 72.9%;
+}
+.bodyStoreOwnerAddStore .form input
+{
+    margin-top: 14px;
+    width: 220px;
+}
+
+.bodyStoreOwnerAddStore .form .btn-block
+{
+    width: 114.7%;
+    height: 55px;
+    margin-top: 30px;
+}
+
+.bodyStoreOwnerAddStore .form select
+{
+    margin-top: 28px;
+}
+
+.bodyStoreOwnerAddStore .form p
+{
+    margin-top: -5px;
+}
+/* End Store Owner Add Store */
+
+
+
+
+/* Start Store Owner Add Product */
+.bodyStoreOwnerHomePage .table input[type='text'],
+.bodyStoreOwnerHomePage .table input[type='number']
+{
+    background-color: #eaeaea;
+    border: none;
+    margin-right: 15px;
+    color: #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.bodyStoreOwnerHomePage .table input[type='submit']
+{
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.bodyStoreOwnerHomePage p
+{
+    margin-top: -23px;
+    margin-left: 31%;
+}
+/* End Store Owner Add Product */
+
+
+
+
+
+/* Start Customer Home Page */
+.bodyCustomerHomePage
+{
+    margin: 0;
+}
+/* End Customer Home Page */
+
+
+/* Start Store Owner Home Page */
+.bodyStoreOwnerHomePage
+{
+    margin: 0;
+}
+/* End Store Owner Home Page */
+
+
+
+/* Start Customer Show Product Page */
+.bodyCustomerShowProduct input[type='submit']
+{
+    width: 58%;
+    margin-left: -19px;
+}
+
+.bodyCustomerShowProduct button
+{
+    margin-top: 10px;
+    width: 52%;
+    margin-left: 23px;
+    background-color: yellow;
+    border: 1px solid yellow;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 3px 0;
+}
+/* End Customer Show Product Page */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

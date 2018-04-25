@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Admin Home Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+
+        <!-- src/main/resources/static/css/style.css -->
+    </head>
+
+    <body class="body bodyAdminHomePage approvePageBody">
+        
+        <div class="logo">
+            <div class="container">
+                <h1><span>AliBaba</span>Egypt</h1>
+                <ul>
+                    <li><a href="adminHomePage">Home</a></li>
+                    <li><a href="adminAddProduct">Add Product</a></li>
+                    <li><a href="adminAddBrand">Add Brand</a></li>
+                    <li><a href="adminAprroveStores">View Stores</a></li>
+                    <li><a href="adminApproveStatistics" style="color: #ff8b38;">System Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        <center>
+            <div class="cont container" style="width: 500px;">
+                <table class="table" border="2">
+                    <tr>
+                        <th>Statistics Name</th>
+                        <th>Enable</th>
+                        <th>Disable</th>
+                    </tr>
+
+                    <tr th:each = "stat : ${statics}">                       
+                        <td th:text="${stat.statName}">statName</td>
+                        <td>
+                            <form action="#" method="post">
+    
+                                <input type="text" hidden="true" th:value="${stat.statName}" name="statName">
+                                <input type="number" value="1" hidden="true" name="statCheck">       
+                                <input type="submit" value="Enable">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="#" method="post">
+    
+                                <input type="text" hidden="true" th:value="${stat.statName}" name="statName">
+                                <input type="number" value="0" hidden="true" name="statCheck">       
+                                <input type="submit" value="Disable">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </center>
+
+    </body>
+</html>
