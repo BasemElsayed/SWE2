@@ -31,7 +31,6 @@ public class actionsController {
 	@Autowired
 	storeOwnerActionsRepository storeActionRepo;
 	
-	
 
 	@GetMapping("/storeOwnerActionsHistory")
     public String storeOwnerActionsHistory(HttpServletRequest request, Model mod) 
@@ -66,8 +65,7 @@ public class actionsController {
         try
         {
         	User temp = (User) request.getSession().getAttribute("user");
-        	
-        	
+
         	Iterable<storeOwnerActions> actionsIterable = storeActionRepo.findAll();
         	for(storeOwnerActions action : actionsIterable)
         	{
@@ -81,8 +79,7 @@ public class actionsController {
         				StoreProduct storeProd = new StoreProduct(action.getProduct(), action.getStore(), action.getNumberOfProduct());
         				storeProd.setNumberOfSoldProduct(action.getNumberOfSoldProduct());
         				storeProd.setNumberOfVisitedProduct(action.getNumberOfVisitedProduct());
-        				storeProdRepo.save(storeProd);
-        				
+        				storeProdRepo.save(storeProd);	
         				storeActionRepo.deleteById(action.getId());
         			}
         			
@@ -115,8 +112,6 @@ public class actionsController {
         		}
         	}
         	
-        	
-        	
         	List<storeOwnerActions> actions = new ArrayList<storeOwnerActions>();
         	actionsIterable = storeActionRepo.findAll();
         	for(storeOwnerActions action : actionsIterable)
@@ -133,12 +128,7 @@ public class actionsController {
         {
         	return "index";
         }
-       
     }
-	
-	
-	
-	
 	
 	
 }

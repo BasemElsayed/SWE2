@@ -90,6 +90,7 @@ public class globalController {
         else
         {
         	us.save(user);
+        	return "index";
         }
         return "signUp";
     }

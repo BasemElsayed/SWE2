@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Entity.Collaborator;
 import Entity.Product;
 import Entity.Store;
 import Entity.StoreProduct;
@@ -22,6 +23,7 @@ import Entity.User;
 import Entity.firstPayment;
 import Entity.storeOwnerActions;
 import Repository.brandRepository;
+import Repository.collaboratorRepository;
 import Repository.firstPaymentRepository;
 import Repository.productRepository;
 import Repository.storeOwnerActionsRepository;
@@ -49,7 +51,8 @@ public class productController {
 	storeOwnerActionsRepository storeActionRepo;
 	@Autowired
 	firstPaymentRepository firstPayRepo;
-	
+	@Autowired
+	collaboratorRepository collabratorRepo;
 	
 	
 	@GetMapping("/adminAddProduct")
@@ -64,10 +67,10 @@ public class productController {
     {    
         System.out.println(productName + "  " + Code + "  " + Type + "  " + Description + "  " + Brand + "  " + Price);
         Product prod = new Product(productName, Brand, Code, Description, Type, Price);
-
         if(pr.existsById(Code) == true)
         {
         	model.addAttribute("warningSameProduct", true);
+        	return "adminHomePage";
         }
         else
         {
@@ -77,11 +80,10 @@ public class productController {
         	}
         	else
         	{
-        		//System.out.println("Not Found Brand");
         		model.addAttribute("warningBrand", true);
+        		return "adminHomePage";
         	}
-        }
-        
+        }   
         return "adminAddProduct";
     }
 
@@ -112,8 +114,8 @@ public class productController {
 	
 	
 	
-	 @PostMapping("/storeOwnerAddProduct")
-	    public String storeOwnerAddProduct(HttpServletRequest request, Model mod, @RequestParam String prodCode, @RequestParam String storeName, @RequestParam int quantity) 
+	@PostMapping("/storeOwnerAddProduct")
+	public String storeOwnerAddProduct(HttpServletRequest request, Model mod, @RequestParam String prodCode, @RequestParam String storeName, @RequestParam int quantity) 
 	    {
 		 
 		 try
@@ -121,8 +123,7 @@ public class productController {
             	User tempUser = (User) request.getSession().getAttribute("user");
     			Optional<Product> tempProduct = prodRepo.findById(prodCode);
     			
-    			
-    			
+ 
     			Store storeOwnerStore = null;
     			
     			Iterable<Store> storeIterables = storeRepo.findAll();
@@ -133,6 +134,17 @@ public class productController {
     					storeOwnerStore = store;
     				}
     			}
+    			
+    			
+    			Iterable<Collaborator> collaIterables = collabratorRepo.findAll();
+    			for(Collaborator collaborator : collaIterables)
+    			{
+    				if( (collaborator.getCollaborator().getEmail().equals(tempUser.getEmail())) && (collaborator.getStore().getStoreName().equals(storeName)) )
+    				{
+    					storeOwnerStore = collaborator.getStore();
+    				}
+    			}
+    			
     			
     			
     			
@@ -150,6 +162,7 @@ public class productController {
     			{
     				System.out.println("Not Founded");	
     				mod.addAttribute("warning", true);
+    				return "storeOwnerHomePage";
     			}
     			
     			
@@ -229,7 +242,6 @@ public class productController {
             			
             			findProd.getStore().getUser().setBalance(findProd.getStore().getUser().getBalance() + fatora);
             			us.save(findProd.getStore().getUser());
-            			
             			mod.addAttribute("products", findProd);
         				mod.addAttribute("warningSucc", true);
     				}
@@ -237,6 +249,7 @@ public class productController {
     				{
     					mod.addAttribute("products", findProd);
     					mod.addAttribute("warning", true);
+    					
     				}
     			}
     			else
@@ -244,6 +257,7 @@ public class productController {
     				System.out.println("Elseeeee : " + quantity);
     				mod.addAttribute("products", findProd);
     				mod.addAttribute("warning", true);
+    				return "customerHomePage";
     			}
     			return "customerShowProduct";
     		 }
@@ -292,7 +306,6 @@ public class productController {
 		return "index";
     }
 	
-	
 	@PostMapping("/storeOwnerBuyProduct")
     public String storeOwnerBuyProduct(HttpServletRequest request, Model mod, @RequestParam String prodCode, @RequestParam String storeName) {
     	
@@ -336,10 +349,6 @@ public class productController {
     	}
 		return "index";
     }
-	
-	
-	
-	
 	
 	@PostMapping("/storeOwnerShowProduct")
     public String storeOwnerShowProduct(HttpServletRequest request, Model mod, @RequestParam String prodCode, 
@@ -434,6 +443,7 @@ public class productController {
     				System.out.println("Elseeeee : " + quantity);
     				mod.addAttribute("products", findProd);
     				mod.addAttribute("warning", true);
+    				return "storeOwnerHomePage";
     			}
     			return "storeOwnerShowProduct";
     		 }
@@ -462,19 +472,32 @@ public class productController {
 	   		 } 
     		else if(temp.getType().equals("StoreOwner"))
     		 {
-    			 //System.out.println("equal Type");
-    			//System.out.println("bara loop");
     			List<StoreProduct> Products = new ArrayList<StoreProduct>();
             	Iterable<StoreProduct> productIterable = storeProdRepo.findAll();
             	for(StoreProduct product : productIterable)
             	{
-            		//System.out.println("gwa loop");
-            		Products.add(product);			
-        			//.out.println("Store Name : " + product.getProduct().getName());
+            		if(product.getStore().getUser().getEmail().equals(temp.getEmail()))
+            		{
+            			Products.add(product);
+            		}
             	}
+            	
+            	Iterable<Collaborator> collaIterables = collabratorRepo.findAll();
+    			for(Collaborator collaborator : collaIterables)
+    			{
+    				if( (collaborator.getCollaborator().getEmail().equals(temp.getEmail())) )
+    				{
+    					for(StoreProduct product : productIterable)
+    	            	{
+    	            		if(collaborator.getStore().getStoreName().equals(product.getStore().getStoreName()))
+    	            		{
+    	            			Products.add(product);
+    	            		}
+    	            	}
+    				}
+    			}
             	mod.addAttribute("products", Products);
-    			
-    			 return "storeOwnerEditProduct";
+    			return "storeOwnerEditProduct";
     		 }
     	}
 		return "index";
@@ -499,12 +522,9 @@ public class productController {
 	   		 } 
     		else if(temp.getType().equals("StoreOwner"))
     		 {
-    			 //System.out.println("equal Type");
     			Optional <Product> prod = prodRepo.findById(prodCode);
     			StoreProduct findProd = new StoreProduct();
-    			
-    			Iterable <StoreProduct> storeProdsIT = storeProdRepo.findAll();
-    			
+    			Iterable <StoreProduct> storeProdsIT = storeProdRepo.findAll();   			
     			for(StoreProduct storePro : storeProdsIT)
     			{
     				if(prod.get().getCode().equals(storePro.getProduct().getCode()) && 
@@ -513,12 +533,8 @@ public class productController {
     					findProd = storePro;
     				}
     			}
-    			
-    			findProd.setNumberOfVisitedProduct(findProd.getNumberOfVisitedProduct()+1);
-    			storeProdRepo.save(findProd);
-    			
+       			storeProdRepo.save(findProd);
     			mod.addAttribute("products", findProd);
-    			
     			return "storeOwnerShowProductEditVersion";
     		 }
     	}
@@ -545,7 +561,12 @@ public class productController {
 	   		 } 
     		else if(temp.getType().equals("StoreOwner"))
     		 {
-				Optional <Product> prod = prodRepo.findById(prodCode);
+				
+    			if(discount < 0 || numberOfProduct < 0)
+    			{
+    				return "storeOwnerHomePage";
+    			}
+    			Optional <Product> prod = prodRepo.findById(prodCode);
 				
 				Iterable <StoreProduct> storeProdsIT = storeProdRepo.findAll();
 				StoreProduct findProd = new StoreProduct();
@@ -561,14 +582,10 @@ public class productController {
 				
 				storeOwnerActions action = new storeOwnerActions("Edit Product", findProd.getNumberOfProduct(), findProd.getNumberOfSoldProduct(),
 						findProd.getNumberOfSoldProduct(), findProd.getProduct(), findProd.getStore());
-				
 				storeActionRepo.save(action);
-				
 				findProd.setDiscount(discount);
 				findProd.setNumberOfProduct(numberOfProduct);
-				
 				storeProdRepo.save(findProd);
-				
 				mod.addAttribute("products", findProd);
 				return "storeOwnerShowProductEditVersion";
     		 }

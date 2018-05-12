@@ -32,8 +32,6 @@ public class adminController {
 	storeRepository storeRepo;
 	
 	
-	
-	
 	@GetMapping("/adminHomePage")
     public String adminHomePage(HttpServletRequest request) {
     	
@@ -60,9 +58,6 @@ public class adminController {
     }
 	
 	
-	
-	
-    
     @GetMapping("/adminAprroveStores")
     public String adminAprroveStores(HttpServletRequest request, Model mod) 
     {
@@ -100,13 +95,12 @@ public class adminController {
     	}
     	else
     	{
-    		System.out.println("name is : " + storeName);
-    		Optional<Store> temp = storeRepo.findById(storeName);
-    		temp.get().setStoreStatus("1");
-    		storeRepo.save(temp.get());
-    		
     		 try
     	        {
+    			 	System.out.println("name is : " + storeName);
+    	    		Optional<Store> temp = storeRepo.findById(storeName);
+    	    		temp.get().setStoreStatus("1");
+    	    		storeRepo.save(temp.get());
     	        	List<Store> stores = new ArrayList<Store>();
     	        	Iterable<Store> storesIterable = storeRepo.findAll();
     	        	for(Store store : storesIterable)
