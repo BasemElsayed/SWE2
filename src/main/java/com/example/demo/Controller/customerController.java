@@ -92,26 +92,28 @@ public class customerController {
     		 {
     			 //System.out.println("equal Type");
     			Optional <Product> prod = prodRepo.findById(prodCode);
-    			StoreProduct findProd = new StoreProduct();
-    			
-    			Iterable <StoreProduct> storeProdsIT = storeProdRepo.findAll();
-    			
-    			for(StoreProduct storePro : storeProdsIT)
+    			try
     			{
-    				if(prod.get().getCode().equals(storePro.getProduct().getCode()) && 
-    						storePro.getStore().getStoreName().equals(storeName))
-    				{
-    					findProd = storePro;
-    				}
+	    			StoreProduct findProd = new StoreProduct();
+	    			Iterable <StoreProduct> storeProdsIT = storeProdRepo.findAll();
+	    			for(StoreProduct storePro : storeProdsIT)
+	    			{
+	    				if(prod.get().getCode().equals(storePro.getProduct().getCode()) && 
+	    						storePro.getStore().getStoreName().equals(storeName))
+	    				{
+	    					findProd = storePro;
+	    				}
+	    			}
+	    			findProd.setNumberOfVisitedProduct(findProd.getNumberOfVisitedProduct()+1);
+	    			storeProdRepo.save(findProd);
+	    			mod.addAttribute("products", findProd);
+	    			return "customerShowProduct";
     			}
-    			
-    			findProd.setNumberOfVisitedProduct(findProd.getNumberOfVisitedProduct()+1);
-    			storeProdRepo.save(findProd);
-    			
-    			mod.addAttribute("products", findProd);
-    			
-    			return "customerShowProduct";
-    		 }
+    			catch(Exception e)
+    			{
+    				return "index";
+    			}
+			}
     	}
 		return "index";
     }

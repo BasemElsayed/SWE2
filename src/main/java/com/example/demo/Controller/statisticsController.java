@@ -65,19 +65,27 @@ public class statisticsController {
     {
         try
         {
-        	Optional <Statistics> updatedStat = statsRepo.findById(statName);
-        	updatedStat.get().setStatCheck(statCheck);
-        	statsRepo.save(updatedStat.get());
-        	
-        	List <Statistics> statistics = new ArrayList<Statistics>();
-        	Iterable <Statistics> statsIterable = statsRepo.findAll();
-        	for(Statistics stat : statsIterable)
+        	if(statCheck == 0 || statCheck == 1)
         	{
-        		statistics.add(stat);
+
+            	Optional <Statistics> updatedStat = statsRepo.findById(statName);
+            	updatedStat.get().setStatCheck(statCheck);
+            	statsRepo.save(updatedStat.get());
+            	
+            	List <Statistics> statistics = new ArrayList<Statistics>();
+            	Iterable <Statistics> statsIterable = statsRepo.findAll();
+            	for(Statistics stat : statsIterable)
+            	{
+            		statistics.add(stat);
+            	}
+            	mod.addAttribute("statics", statistics);
+            	return "adminApproveStatistics"; 
         	}
-        	mod.addAttribute("statics", statistics);
-        	return "adminApproveStatistics";
-        }
+        	else
+        	{
+        		return "index";
+        	}
+	    }
         catch(Exception e)
         {
         	return "index";
