@@ -16,7 +16,21 @@
     width: 1200px;
     margin: auto;
 }
-
+.btn
+{
+    background-color: transparent;
+    margin-top: 15px;
+    color: #ffffff;
+    padding: 9px 22px;
+    border: 2px solid #d3671a;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.btn:hover
+{
+    background-color: #d3671a;
+}
 .logo
 {
     background-color: rgba(0,0,0,0.4);
@@ -63,7 +77,7 @@
 {
     text-decoration: none;
     color: #FFF;
-    font-size: 18px;
+    font-size: 17px;
     transition: all 0.3s ease-in-out;
 }
 .logo ul li a:hover
