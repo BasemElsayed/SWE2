@@ -1,15 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Admin Approve Stores Page</title>
+        <title>Store Owner Add Collaborator</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
 
-        <!-- src/main/resources/static/css/style.css --> 
+        <!-- src/main/resources/static/css/style.css -->   
     </head>
 
-    <body class="body bodyStoreOwnerHomePage approvePageBody bodyStoreOwnerAddStore">
-
+    <body class="body bodyStoreOwnerAddStore">
+        
+        
         <div class="logo">
             <div class="container">
                 <h1><span>AliBaba</span>Egypt</h1>
@@ -24,14 +25,27 @@
                     <li><a href="storeOwnerProductsStatistics">Products Stats</a></li>
                     <li><a href="storeOwnerUsersStatistics">Users Stats</a></li>
                     <li><a href="storeOwnerActionsHistory">Actions</a></li>
-                    <li><a href="storeOwnerShowCollaborator">Colla..</a></li>
+                    <li><a href="storeOwnerShowCollaborator" style="color: #ff8b38;">Colla..</a></li>
                 </ul>
             </div>
         </div>
         
-        <h1 style="text-align: center; color: red; margin-top: 150px;">Access Denied</h1>
+        
+        
+        <div class="form" style="height: 332px;">
+            <h1>Add <span>Collaborator</span></h1>
+            <form action="#" method="post" th:object="${model}">
+                <input type="text" name="storeName" placeholder="Store Name" required />
+                <input type="text" name="collaboratoEmail" placeholder="Collaborator Email" required />
+    
+                <p th:if="${warning}">*Operation Failed Successfully.*</p>
+                <p th:if="${succWarning}" style="color: limegreen;">*Operation Done Successfully.*</p>
+                <input class="btn-block" type="submit" value="Submit" />
+            </form>
+        </div>
+        
         
     </body>
-    
-    
 </html>
+
+
